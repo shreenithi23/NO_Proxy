@@ -3,6 +3,8 @@ import 'package:no_proxy/staff_dash.dart';
 import 'staffpage.dart';
 import 'studentpage.dart';
 import 'qr_generate.dart';
+import 'qr_scanner.dart';
+import 'qr_result.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +28,9 @@ class MyApp extends StatelessWidget {
         '/staff':(context) => StaffPage(),
         '/student':(context) => StudentPage(),
         '/staff_dash':(context) => DashboardPage(),
-        '/qr_generate':(context) => QrGeneratePage()
+        '/qr_generate':(context) => QrGeneratePage(),
+        '/qr_scan':(context) => QrscannerPage(),
+        //'/qr_scan_result':(context) => ResultScreen(),
       },
     );
   }
