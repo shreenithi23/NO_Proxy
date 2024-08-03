@@ -4,13 +4,20 @@ import 'staffpage.dart';
 import 'studentpage.dart';
 import 'qr_generate.dart';
 import 'qr_scanner.dart';
-import 'qr_result.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(MyApp());
+// void main() {
+//   runApp(MyApp());
+// }
+
+Future<void> main() async {
+  await Supabase.initialize(
+    url: 'https://lexqzvkyuvvqkfxhmjmi.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxleHF6dmt5dXZ2cWtmeGhtam1pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI2MTgyNzUsImV4cCI6MjAzODE5NDI3NX0.dEtSzHaVGyzL6uOH_FdBai44LUbmiUWhxQbZyW14cSE',
+  );
+  runApp(const MyApp());
 }
-
-
+final supabase = Supabase.instance.client;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/staff':(context) => StaffPage(),
         '/student':(context) => StudentPage(),
         '/staff_dash':(context) => DashboardPage(),
-        '/qr_generate':(context) => QrGeneratePage(),
+        //'/qr_generate':(context) => QrGeneratePage(),
         '/qr_scan':(context) => QrscannerPage(),
         //'/qr_scan_result':(context) => ResultScreen(),
       },

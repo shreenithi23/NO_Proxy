@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'qr_result.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'dart:io';
+import 'dart:convert';  // For utf8.encode
+import 'package:crypto/crypto.dart';  // For SHA-256 hashing
+
 class QrscannerPage extends StatelessWidget {
   QrscannerPage ({super.key});
 

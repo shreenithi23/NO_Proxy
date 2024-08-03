@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'qr_scanner.dart';
-import 'package:no_proxy/qr_scanner.dart';
+//import 'package:no_proxy/qr_scanner.dart';
 
 // class StudentPage extends StatelessWidget{
 //   @override

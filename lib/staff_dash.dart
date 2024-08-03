@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:no_proxy/qr_generate.dart';
 
 
 class DashboardPage extends StatelessWidget{
@@ -18,7 +19,7 @@ class DashboardPage extends StatelessWidget{
         child: Center(
           child: ElevatedButton(
               onPressed: (){
-                Navigator.pushNamed(context, '/qr_generate');
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>QRGeneratePage()),);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF101820),
