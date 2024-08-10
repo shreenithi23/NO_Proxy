@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:no_proxy/staff_dash.dart';
 import 'staffpage.dart';
 import 'studentpage.dart';
 import 'qr_generate.dart';
 import 'qr_scanner.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
 
 Future<void> main() async {
   await Supabase.initialize(
@@ -24,73 +21,131 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     return MaterialApp(
-      title:'Navigation Sample',
-      theme:ThemeData(
+      title: 'Navigation Sample',
+      theme: ThemeData(
         primarySwatch: Colors.amber,
+        textTheme: GoogleFonts.latoTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
-      home:HomePage(),
-      routes:{
-        '/staff':(context) => StaffPage(),
-        '/student':(context) => StudentPage(),
-        '/staff_dash':(context) => DashboardPage(),
-        //'/qr_generate':(context) => QrGeneratePage(),
-        '/qr_scan':(context) => QrscannerPage(),
-        //'/qr_scan_result':(context) => ResultScreen(),
+      home: HomePage(),
+      routes: {
+        '/staff': (context) => StaffPage(),
+        '/student': (context) => StudentPage(),
+        '/staff_dash': (context) => DashboardPage(),
+        //'/qr_generate': (context) => QrGeneratePage(),
+        '/qr_scan': (context) => QrscannerPage(),
+        //'/qr_scan_result': (context) => ResultScreen(),
       },
     );
   }
 }
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      
-        appBar:AppBar(
-          title:Text('NO PROXY',
-          style: TextStyle(color:Colors.white),
-          ),
-          backgroundColor: Color(0xFF101820),
-          centerTitle: true,
-          
+
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text(
+          'NO PROXY',
+          style: TextStyle(color: Colors.white),
         ),
-        body:Container(
-          color:Colors.yellow ,
-          child:Center(
-            child:Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/staff');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:Color(0xFF101820),
+        backgroundColor: Color(0xFF101820),
+        centerTitle: true,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          color:Color(0xffd6e2ea),
+          // gradient: LinearGradient(
+          //   colors: [Colors.blue.withOpacity(0.5), Colors.grey.withOpacity(0.2)],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+            child: SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      Image.asset('assets/teacher.png',
+                      width:100,
+                        height:100,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/staff');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(130,50),
+                          backgroundColor: Colors.blue.withOpacity(0.1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          shadowColor: Colors.black,
+                          elevation: 5,
+                        ),
+
+                        child: Text(
+                          "STAFF",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 25,
+                        width: 250,
+                      ),
+                      Image.asset('assets/student3.png',
+                        width:180,
+                        height:120,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/student');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150,50),
+                          backgroundColor: Colors.blue.withOpacity(0.1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          shadowColor: Colors.black,
+                          elevation: 5,
+                        ),
+
+                        child: Text(
+                          "STUDENT",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  child:Text("STAFF",
-                    style:TextStyle(color:Colors.yellow,
-                    )
-                  ),
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, '/student');
-                }, 
-                style:ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF101820),
-                ),
-                child: Text("STUDENT",
-                style:TextStyle(color:Colors.yellow,
-                ), 
-                ),
-                )
-              ],
-            )
-          )
-        )
+            ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
