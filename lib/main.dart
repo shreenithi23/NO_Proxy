@@ -138,12 +138,32 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ],
+
                   ),
                 ),
             ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextButton(
+                  onPressed: () {
+                    // Navigate to sign-up page
+                  },
+                  child: Text(
+                    "No account? SIGN UP",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ],
+            //Spacer(),
+
           ),
+
         ),
       ),
     );

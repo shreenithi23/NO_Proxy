@@ -109,20 +109,36 @@ class _StudentPageState extends State<StudentPage> {
             MaterialPageRoute(builder: (context) => QrscannerPage()),
           );
         } else {
+          trigFail!.fire();
+          await Future.delayed(Duration(seconds: 1));
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Incorrect Password')),
           );
         }
-      } else {
-        trigFail!.fire();
-        await Future.delayed(Duration(seconds: 1));
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('No user found with this email')),
-        );
       }
+      //  else {
+      //   trigFail!.fire();
+      //   await Future.delayed(Duration(seconds: 1));
+      //   ScaffoldMessenger.of(context).showSnackBar(
+      //     SnackBar(content: Text('1No user found with this email')),
+      //   );
+      // }
     } catch (error) {
+      //trigSuccess=false as SMITrigger?;
+      //trigFail=false as SMITrigger;
+      //trigFail=null;
+      trigSuccess=null;
+      if (trigFail != null) {
+        trigFail!.fire();
+        print("trigFail fired");
+      }
+      else {
+        trigFail!.fire();
+        trigFail!.fire();
+      }
+      await Future.delayed(Duration(seconds: 1));
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(error.toString())),
+        SnackBar(content: Text('No user found with this email')),
       );
     }
   }

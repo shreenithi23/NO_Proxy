@@ -19,7 +19,9 @@ class QrscannerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffd6e2ea),
       appBar: AppBar(
+        backgroundColor: Color(0xffd6e2ea),
         centerTitle: true,
         title: Text("QR Scanner",
           style: TextStyle(
@@ -30,6 +32,8 @@ class QrscannerPage extends StatelessWidget {
         ),
       ),
       body: Container(
+        color: Color(0xffd6e2ea),
+        //backgroundColor: const Color(0xffd6e2ea),
         child:Column(
           children:[
             Expanded(
